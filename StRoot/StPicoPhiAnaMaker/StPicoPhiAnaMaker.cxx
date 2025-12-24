@@ -559,7 +559,7 @@ bool StPicoPhiAnaMaker::isKaon(StPicoTrack const * const trk) const {
   TVector3 t = trk->gMom();
   if (!mHFCuts->hasGoodEta(t)) return false;
   if (!mHFCuts->isHybridTOFHadron(trk, mHFCuts->getTofBetaBase(trk, mPicoDst->event()->bField()), StHFCuts::kKaon) ) return false;
-  if (!mHFCuts->cutMinDcaToPrimVertex(trk, StPicoCutsBase::kKaon)) return false;
+  if (!mHFCuts->cutMaxDcaToPrimVertex(trk, StPicoCutsBase::kKaon)) return false;
   return (mHFCuts->isGoodTrack(trk) && mHFCuts->isTPCHadron(trk, StPicoCutsBase::kKaon));
 }
 

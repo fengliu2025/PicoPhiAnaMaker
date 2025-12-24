@@ -16,7 +16,7 @@
 #include <ctime>
 #include <cstdio>
 
-#include "StPicoLambdaAnaMaker/StPicoLambdaAnaMaker.h"
+#include "StPicoPhiAnaMaker/StPicoPhiAnaMaker.h"
 
 using namespace std;
 
@@ -27,7 +27,7 @@ class StChain;
 //StChain *chain;
 
 //triggerSetup = 0 - MB, 1 - JP2
-void runPicoLambdaAnaMaker3(const int run, const int seg){
+void runPicoPhiAnaMaker3(const int run, const int seg){
 
   const unsigned int makerMode = 0 /*kAnalyze*/;
   const Char_t *badRunListFileName = "picoList_bad_MB.list";
@@ -79,7 +79,7 @@ void runPicoLambdaAnaMaker3(const int run, const int seg){
   gSystem->Load("StPicoDstMaker");
   gSystem->Load("StPicoCutsBase");
   gSystem->Load("StPicoHFMaker");
-  gSystem->Load("StPicoLambdaAnaMaker");
+  gSystem->Load("StPicoPhiAnaMaker");
   cout << " loading of shared HF libraries are done" << endl;
 
   StChain *chain = new StChain();
@@ -141,14 +141,14 @@ void runPicoLambdaAnaMaker3(const int run, const int seg){
 
   StPicoDstMaker* picoDstMaker = new StPicoDstMaker(StPicoDstMaker::IoRead, sInputFile, "picoDstMaker"); //for local testing only
 
-  StPicoLambdaAnaMaker* picoLambdaAnaMaker = new StPicoLambdaAnaMaker("picoLambdaAnaMaker", picoDstMaker, outputFile, sInputListHF);
-  picoLambdaAnaMaker->setMakerMode(makerMode);
-  picoLambdaAnaMaker->setDecayChannel(StPicoLambdaAnaMaker::kChannel1);//not needed?
-  picoLambdaAnaMaker->setTreeName(treeName);
+  StPicoPhiAnaMaker* picoPhiAnaMaker = new StPicoPhiAnaMaker("picoPhiAnaMaker", picoDstMaker, outputFile, sInputListHF);
+  picoPhiAnaMaker->setMakerMode(makerMode);
+  picoPhiAnaMaker->setDecayChannel(StPicoPhiAnaMaker::kChannel1);//not needed?
+  picoPhiAnaMaker->setTreeName(treeName);
 
 
   StHFCuts* hfCuts = new StHFCuts("hfBaseCuts");
-  picoLambdaAnaMaker->setHFBaseCuts(hfCuts);
+  picoPhiAnaMaker->setHFBaseCuts(hfCuts);
 
   // ---------------------------------------------------
   // -- Set Base cuts for HF analysis
@@ -198,7 +198,7 @@ void runPicoLambdaAnaMaker3(const int run, const int seg){
   }
   else
   {
-    cout<<"Wrong trigger setup in runPicoLambdaAnaMaker!"<<endl;
+    cout<<"Wrong trigger setup in runPicoPhiAnaMaker!"<<endl;
     return;  
   }
 
@@ -212,14 +212,14 @@ void runPicoLambdaAnaMaker3(const int run, const int seg){
 
   // ---------------------------------------------------
 
-  picoLambdaAnaMaker->setDecayMode(StPicoHFEvent::kTwoParticleDecay); //to setup secondary vertices as StHFPair
+  picoPhiAnaMaker->setDecayMode(StPicoHFEvent::kTwoParticleDecay); //to setup secondary vertices as StHFPair
 
 
   hfCuts->setCutEta(1.5);
   hfCuts->setCutPtMin(0.15); //global min. pT cut
 
   hfCuts->setCutDcaMin(0.3,StHFCuts::kPion); //original 0.3, loose 0.1
-  //hfCuts->setCutDcaMin(0.01,StHFCuts::kKaon); 
+  hfCuts->setCutDcaMax(3,StHFCuts::kKaon);  //Feng Liu 2025/12/24
   hfCuts->setCutDcaMin(0.1,StHFCuts::kProton); //original 0.1, lose 0.05
 
   //-----------lambda selection cuts----------------------------
