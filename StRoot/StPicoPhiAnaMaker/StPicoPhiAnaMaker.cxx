@@ -48,7 +48,7 @@ int StPicoPhiAnaMaker::InitHF() {
 
     //event
     //ntp_kaon->Branch("runId", &runId, "runId/I");            //Int_t runId
-    ntp_kaon->Branch("eventId", &eventId, "eventId/I");       //Int_t eventId
+    ntp_Kaon->Branch("eventId", &eventId, "eventId/I");       //Int_t eventId
     ntp_Kaon->Branch("Vz", &Vz, "Vz/F"); //VzVzVPDmax
     //ntp_Kaon->Branch("VzVzVPDmax", &VzVzVPDmax, "VzVzVPDmax/F"); //VzVzVPDmax
     
@@ -250,7 +250,7 @@ int StPicoPhiAnaMaker::fillCandidates(){
     Int_t bTofPidTraitsIndex =  kaon->bTofPidTraitsIndex();
 
     if(bTofPidTraitsIndex>=0){
-      StPicoBTofPidTraits *btofPidTraits = mPicoDst->botPidTraits(bTofPidTraitsIndex);
+      StPicoBTofPidTraits *btofPidTraits = mPicoDst->btofPidTraits(bTofPidTraitsIndex);
       if(btofPidTraits->btofMatchFlag()){
         kaon_beta[idxKaon]  = btofPidTraits->btofBeta();
       }
@@ -290,7 +290,7 @@ int StPicoPhiAnaMaker::analyzeCandidates(){
           if( fabs( kaon_1->charge() + kaon_2->charge() ) != 0 ) continue;
 
           TLorentzVector LorzVec_kaon_1;
-          TLorenrzVector LorzVec_kaon_2;
+          TLorentzVector LorzVec_kaon_2;
 
           LorzVec_kaon_1.SetPtEtaPhiM( kaon_1->gMom().Pt(),
                                        kaon_1->gMom().Eta(),

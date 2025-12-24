@@ -137,7 +137,7 @@ private:
 
   // -- ADD USER MEMBERS HERE ------------------- 
   TH1D *h1D_PhiCandidates_mass_spectrum;
-  TTree *ntp_Kaon // only identified kaon will be stored 
+  TTree *ntp_Kaon; // only identified kaon will be stored 
   
 
   int mRunNumber;
