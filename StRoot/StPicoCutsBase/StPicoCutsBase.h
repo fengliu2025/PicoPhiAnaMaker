@@ -161,7 +161,7 @@ class StPicoCutsBase : public TNamed
   void setCutPtMin(float pT);
   void setCutPtRange(float min, float max, int pidFlag);
   void setCutDcaMin(float min, int pidFlag);
-  void serCutDcaMax(float max, int pidFlag); //Feng Liu 2025/12/24
+  void setCutDcaMax(float max, int pidFlag); //Feng Liu 2025/12/24
   void setCutDcaMinTertiary(float min, int pidFlag);
   void setCutTPCNSigma(float f, int pidFlag);
   void setCutTOFNSigma(float f, int pidFlag);
