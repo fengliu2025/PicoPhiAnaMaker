@@ -262,7 +262,7 @@ int StPicoPhiAnaMaker::fillCandidates(){
     kaon_phi[idxKaon]       =  kaon->gMom().Phi() ;
     kaon_eta[idxKaon]       =  kaon->gMom().Eta() ; 
     kaon_pt[idxKaon]        =  kaon->gMom().Pt()  ; 
-    kaon_dca[idxKaon]       =  kaon->dDCAxy(mPrimVtx.x(),mPrimVtx.y()); 
+    kaon_dca[idxKaon]       =  0;//kaon->dDCAxy(mPrimVtx.x(),mPrimVtx.y()); 
     kaon_ch[idxKaon]        =  kaon->charge();   
     kaon_dedx[idxKaon]      =  kaon->dEdx();
     
