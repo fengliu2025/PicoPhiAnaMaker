@@ -157,7 +157,7 @@ void runPicoPhiAnaMaker3(const int run, const int seg){
   hfCuts->setBadRunListFileName(badRunListFileName);
 
   // -- ADD USER CUTS HERE ----------------------------
-  hfCuts->setCutVzMax(60.); //original 30
+  hfCuts->setCutVzMax(50.); //original 30
   hfCuts->setCutVzVpdVzMax(1e6); //original 3 - now open
 
   //MB
@@ -202,20 +202,20 @@ void runPicoPhiAnaMaker3(const int run, const int seg){
     return;  
   }
 
-  hfCuts->setCutNHitsFitMin(20); //for analysis (TTree)
+  hfCuts->setCutNHitsFitMin(15); //for analysis (TTree)
   hfCuts->setCutNHitsFitMinHist(20); //for histograms
 
   hfCuts->setCutRequireHFT(false);
   hfCuts->setCutRequireISTorSST(false); //just for Run15!!!
 
-  hfCuts->setCutNHitsFitnHitsMax(0.52); 
+  hfCuts->setCutNHitsFitnHitsMax(0.55); 
 
   // ---------------------------------------------------
 
   picoPhiAnaMaker->setDecayMode(StPicoHFEvent::kTwoParticleDecay); //to setup secondary vertices as StHFPair
 
 
-  hfCuts->setCutEta(1.5);
+  hfCuts->setCutEta(1.);
   hfCuts->setCutPtMin(0.15); //global min. pT cut
 
   hfCuts->setCutDcaMin(0.3,StHFCuts::kPion); //original 0.3, loose 0.1
@@ -263,7 +263,7 @@ void runPicoPhiAnaMaker3(const int run, const int seg){
 
   //Single track pt
   hfCuts->setCutPtRange(0.15,20.0,StHFCuts::kPion);
-  hfCuts->setCutPtRange(0.15,20.0,StHFCuts::kKaon);
+  hfCuts->setCutPtRange(0.1,10.0,StHFCuts::kKaon);
   hfCuts->setCutPtRange(0.15,20.0,StHFCuts::kProton);
   //___________________________________________________________________________________________________________
 
