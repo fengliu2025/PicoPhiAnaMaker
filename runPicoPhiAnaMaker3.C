@@ -42,7 +42,7 @@ void runPicoPhiAnaMaker3(const int run, const int seg){
   input<<"/star/u/jjiastar/pwg/Spin/production/"<<run<<"/"<<run<<".0"<<seg<<".list";
 
   stringstream output;
-  output<<"/star/u/fliu5/Spin_Production/output/"<<run<<"_"<<seg<<".root";
+  output<<"/star/u/fliu5//PicoPhiAnaMaker/output/"<<run<<"_"<<seg<<".root";
 
   std::string inputFileStr = input.str();
   std::string outputFileStr = output.str();
