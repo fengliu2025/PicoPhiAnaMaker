@@ -297,9 +297,9 @@ int StPicoPhiAnaMaker::analyzeCandidates(){
                                        kaon_1->gMom().Phi(),
                                        mHFCuts->getHypotheticalMass(StHFCuts::kKaon)
                                      ); 
-          LorzVec_kaon_2.SetPtEtaPhiM( kaon_1->gMom().Pt(),
-                                       kaon_1->gMom().Eta(),
-                                       kaon_1->gMom().Phi(),
+          LorzVec_kaon_2.SetPtEtaPhiM( kaon_2->gMom().Pt(),
+                                       kaon_2->gMom().Eta(),
+                                       kaon_2->gMom().Phi(),
                                        mHFCuts->getHypotheticalMass(StHFCuts::kKaon)                          
                                      );
           //pair 
