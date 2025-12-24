@@ -304,7 +304,12 @@ int StPicoPhiAnaMaker::analyzeCandidates(){
                                      );
           //pair 
           TLorentzVector LorzVec_phi = LorzVec_kaon_1 + LorzVec_kaon_2;
-          h1D_PhiCandidates_mass_spectrum->Fill(LorzVec_phi.M());
+
+          if(LorzVec_phi.Pt() > 0.6 && LorzVec_phi.Pt() < 1.4 ){
+              h1D_PhiCandidates_mass_spectrum->Fill(LorzVec_phi.M());
+          }
+
+          
 
 
       }
