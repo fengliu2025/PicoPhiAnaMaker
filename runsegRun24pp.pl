@@ -11,5 +11,5 @@
     chop($run);
 
     #system("root -b -q analy.C\\($inputlst,\\\"$rootfile\\\"\\)");
-    system("root4star -b -q runPicoLambdaAnaMaker3.C\\($run,$seg\\)");
+    system("root4star -b -q runPicoPhiAnaMaker3.C\\($run,$seg\\)");
 }
